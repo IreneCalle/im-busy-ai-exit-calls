@@ -1,0 +1,34 @@
+# Secrets and local state
+.env
+*.sqlite3
+*.db
+data/
+
+# Internal notes and tooling
+HANDOFF.md
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Node
+web/node_modules/
+web/dist/
+
+# Eval output
+evals/results/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

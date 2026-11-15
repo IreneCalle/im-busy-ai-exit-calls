@@ -1,0 +1,86 @@
+[project]
+name = "imbusy"
+version = "0.1.0"
+description = "Text an excuse. Your phone rings. It's your aunt."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    # anthropic 2.x sends API version 2026-10-21 (no sampling params, MessageParam union per role).
+    "anthropic>=2.8.0,<3",
+    "fastapi>=0.162.0",
+    "uvicorn[standard]>=0.54.0",
+    "pydantic>=2.14",
+    "pydantic-settings>=2.16.0",
+    "httpx>=0.28.1",
+    "redis>=8.1.0",
+    "twilio>=9.13.0,<10",
+    "pyyaml>=6.0.2",
+    "typer>=0.29",
+    # IANA zones for zoneinfo on Windows, which ships no tz database.
+    "tzdata>=2025.2",
+]
+
+[project.scripts]
+imbusy = "imbusy.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2",
+    "pytest-asyncio>=1.5",
+    "ruff>=0.17",
+    "mypy>=2.4",
+    "poethepoet>=0.49.0",
+    "types-pyyaml>=6.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# Prompt files (.md/.yaml) under the package are shipped as package data by default.
+packages = ["src/imbusy"]
+
+[tool.poe.tasks]
+dev = { cmd = "uvicorn imbusy.main:create_app --factory --reload --host 0.0.0.0 --port 8000", help = "Run the API with reload" }
+serve = { cmd = "uvicorn imbusy.main:create_app --factory --host 0.0.0.0 --port 8000", help = "Run the API" }
+test = { cmd = "pytest", help = "Run the test suite (no network, no keys)" }
+lint = { sequence = [{ cmd = "ruff check src tests evals scripts" }, { cmd = "ruff format --check src tests evals scripts" }, { cmd = "mypy src" }], help = "Lint, format check, type check" }
+fmt = { sequence = [{ cmd = "ruff format src tests evals" }, { cmd = "ruff check --fix src tests evals" }], help = "Format and autofix" }
+eval = { cmd = "python -m evals.latency", help = "Measure turn latency p50/p95 against the real model" }
+eval-fixture = { cmd = "python -m evals.latency --fixture --calls 3", help = "Check the latency harness without a key (numbers are fake)" }
+eval-golden = { cmd = "python -m evals.golden_compiler", help = "Run the excuse compiler against the golden cases" }
+set-webhook = { cmd = "imbusy telegram set-webhook", help = "Point the Telegram bot at PUBLIC_BASE_URL" }
+web-dev = { cmd = "python scripts/web.py dev", help = "Run the Vite dev server for the demo page" }
+web-build = { cmd = "python scripts/web.py build", help = "Build the demo page into web/dist" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "ASYNC"]
+# Line length is the formatter's job; data tables and prompts keep long lines on purpose.
+ignore = ["E501", "UP046"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Header"]
+
+[tool.ruff.lint.per-file-ignores]
+# Eval scripts write one result file at the end; blocking I/O there is fine.
+"evals/*" = ["ASYNC240"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+warn_unused_ignores = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
