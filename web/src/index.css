@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* Design tokens. Components use these through Tailwind names only; no hex values in components. */
+:root {
+  --paper: #fafaf7;
+  --surface: #ffffff;
+  --ink: #17181c;
+  --muted: #5b5e6b;
+  --line: #e6e6e1;
+  --accent: #ff5a36;
+  --accent-text: #c93a1b;
+  --deep: #3a0d05;
+  --on-deep: #ffffff;
+  --frame-warm: #f3e7dc;
+  --phone: #121214;
+  --phone-bezel: #050506;
+  --on-accent: #17181c;
+  --float-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.45);
+  --phone-ink: #f4f4f0;
+  --phone-muted: #a3a6b3;
+  --positive: #1f9d55;
+  --negative: #e5484d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1012;
+    --surface: #17181c;
+    --ink: #f4f4f0;
+    --muted: #a3a6b3;
+    --line: #2a2c33;
+    --accent-text: #ff5a36;
+    --frame-warm: #1d1512;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0f1012;
+  --surface: #17181c;
+  --ink: #f4f4f0;
+  --muted: #a3a6b3;
+  --line: #2a2c33;
+  --accent-text: #ff5a36;
+  --frame-warm: #1d1512;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-deep: var(--deep);
+  --color-on-deep: var(--on-deep);
+  --color-phone: var(--phone);
+  --color-phone-bezel: var(--phone-bezel);
+  --color-on-accent: var(--on-accent);
+  --shadow-float: var(--float-shadow);
+  --color-phone-ink: var(--phone-ink);
+  --color-phone-muted: var(--phone-muted);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --radius-canvas: 28px;
+  --radius-card: 20px;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The page is a rounded canvas inset in a frame painted with the accent fading into warm neutral. */
+.frame {
+  background: linear-gradient(140deg, color-mix(in oklab, var(--accent) 55%, var(--frame-warm)) 0%, var(--frame-warm) 60%);
+}
+
+.hero-wash {
+  background:
+    radial-gradient(60% 55% at 100% 0%, color-mix(in oklab, var(--accent) 13%, transparent) 0%, transparent 70%),
+    var(--paper);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--line) 50%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--line) 50%, transparent) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+.accent-tile {
+  background: linear-gradient(150deg, var(--accent) 0%, color-mix(in oklab, var(--accent) 60%, var(--deep)) 100%);
+}
+
+/* The incoming-call ring: concentric coral pulses behind the caller's initial. */
+@keyframes ring-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.ring-pulse::before,
+.ring-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: ring-pulse 1.6s ease-out infinite;
+}
+
+.ring-pulse::after {
+  animation-delay: 0.8s;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.speaking-caret {
+  animation: caret 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse::before,
+  .ring-pulse::after,
+  .speaking-caret {
+    animation: none;
+  }
+  * {
+    transition-duration: 0ms !important;
+  }
+}
