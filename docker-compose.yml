@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    volumes:
+      - imbusy-data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Optional public URL for real calls: `docker compose --profile tunnel up`.
+  # The trycloudflare.com hostname is printed in this service's logs and changes on every start;
+  # copy it into PUBLIC_BASE_URL, restart `app`, then run `uv run poe set-webhook`.
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    profiles: ["tunnel"]
+    command: ["tunnel", "--no-autoupdate", "--url", "http://app:8000"]
+    depends_on:
+      - app
+
+volumes:
+  imbusy-data:
