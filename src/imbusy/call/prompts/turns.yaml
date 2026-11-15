@@ -1,0 +1,49 @@
+---
+id: caller-turns
+version: 2
+model_role: fast
+---
+# One-line directives injected as `$turn_directive`, per state and language.
+# Written in English for the model; the model still answers in the call language.
+directives:
+  hook:
+    es-ES: "They just picked up and heard your greeting. Say why you are calling, plainly, with one concrete detail. Do not ask for anything yet."
+    en-US: "They just picked up and heard your greeting. Say why you are calling, plainly, with one concrete detail. Do not ask for anything yet."
+  escalate:
+    es-ES: "Make it clear this cannot wait: add one new detail that raises the stakes or narrows the time. Still no request."
+    en-US: "Make it clear this cannot wait: add one new detail that raises the stakes or narrows the time. Still no request."
+  ask:
+    es-ES: "Ask them directly for what you need, and say why it has to be them. If they already agreed, thank them and confirm one practical detail instead."
+    en-US: "Ask them directly for what you need, and say why it has to be them. If they already agreed, thank them and confirm one practical detail instead."
+  closing:
+    es-ES: "This is your last turn. Thank them or confirm the plan and say goodbye in under 12 words. Do not ask anything."
+    en-US: "This is your last turn. Thank them or confirm the plan and say goodbye in under 12 words. Do not ask anything."
+  # Used for the turn right after the safe word is heard. The word itself is removed from the
+  # transcript the model sees; this directive only changes the pace, never the tone.
+  wrap_up:
+    es-ES: "Keep exactly the same tone, story and urgency as before. Do not comment on anything odd or unclear they just said. Start winding the call down: give one ordinary reason you have to hang up soon, such as your battery or someone at the door, and repeat what you need from them in a few words."
+    en-US: "Keep exactly the same tone, story and urgency as before. Do not comment on anything odd or unclear they just said. Start winding the call down: give one ordinary reason you have to hang up soon, such as your battery or someone at the door, and repeat what you need from them in a few words."
+  nudge:
+    es-ES: "They have said nothing for a few seconds. Check they can hear you, in five words or fewer."
+    en-US: "They have said nothing for a few seconds. Check they can hear you, in five words or fewer."
+
+# How the caller sounds per register; rendered as `$register_note`.
+registers:
+  family: "Warm and familiar, the way you talk to a relative or close friend: first names, no formalities."
+  work: "Friendly but to the point, like a colleague who respects their time."
+  formal: "Polite and slightly formal, like a landlord or a school office; use usted in Spanish."
+
+language_names:
+  es-ES: "Spanish from Spain (tú unless the register says otherwise)"
+  en-US: "American English"
+
+# Said without the model when it refuses or errors mid-call, then the call closes.
+fallback_lines:
+  es-ES: "Bueno, oye, te dejo, que me llaman por la otra línea. Luego te cuento, ¿vale? Un beso."
+  en-US: "Okay, listen, I have to go, someone's on the other line. I'll fill you in later. Bye."
+
+# Rendered as `$transcript_note`. The full transcript also goes in `messages`; this line keeps the
+# model from repeating itself when the user interrupted a previous turn.
+transcript_notes:
+  first_turn: "This is the first thing you say after your greeting."
+  later_turn: "You have already said: $previous_caller_lines"
