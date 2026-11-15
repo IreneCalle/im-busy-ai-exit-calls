@@ -1,0 +1,133 @@
+{
+  "_source": "Shapes from https://core.telegram.org/bots/api (Update, Message, Location) and https://core.telegram.org/bots/features#deep-linking. Ids and coordinates are invented. Live location updates arrive as edited_message with edit_date.",
+  "safeword_set": {
+    "update_id": 815300001,
+    "message": {
+      "message_id": 31,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052600,
+      "text": "/safeword Pink Flamingo",
+      "entities": [{"offset": 0, "length": 9, "type": "bot_command"}]
+    }
+  },
+  "safeword_bad": {
+    "update_id": 815300002,
+    "message": {
+      "message_id": 32,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052610,
+      "text": "/safeword flamingo",
+      "entities": [{"offset": 0, "length": 9, "type": "bot_command"}]
+    }
+  },
+  "safeword_status": {
+    "update_id": 815300003,
+    "message": {
+      "message_id": 33,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052620,
+      "text": "/safeword",
+      "entities": [{"offset": 0, "length": 9, "type": "bot_command"}]
+    }
+  },
+  "trusted": {
+    "update_id": 815300004,
+    "message": {
+      "message_id": 34,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052630,
+      "text": "/trusted",
+      "entities": [{"offset": 0, "length": 8, "type": "bot_command"}]
+    }
+  },
+  "invite_opened": {
+    "update_id": 815300005,
+    "message": {
+      "message_id": 1,
+      "from": {"id": 5151, "is_bot": false, "first_name": "Ana", "language_code": "es"},
+      "chat": {"id": 5151, "first_name": "Ana", "type": "private"},
+      "date": 1763052700,
+      "text": "/start trust_REPLACED_IN_TEST",
+      "entities": [{"offset": 0, "length": 6, "type": "bot_command"}]
+    }
+  },
+  "accept": {
+    "update_id": 815300006,
+    "message": {
+      "message_id": 2,
+      "from": {"id": 5151, "is_bot": false, "first_name": "Ana", "language_code": "es"},
+      "chat": {"id": 5151, "first_name": "Ana", "type": "private"},
+      "date": 1763052710,
+      "text": "/accept",
+      "entities": [{"offset": 0, "length": 7, "type": "bot_command"}]
+    }
+  },
+  "leave": {
+    "update_id": 815300007,
+    "message": {
+      "message_id": 3,
+      "from": {"id": 5151, "is_bot": false, "first_name": "Ana", "language_code": "es"},
+      "chat": {"id": 5151, "first_name": "Ana", "type": "private"},
+      "date": 1763052720,
+      "text": "/leave",
+      "entities": [{"offset": 0, "length": 6, "type": "bot_command"}]
+    }
+  },
+  "location_once": {
+    "update_id": 815300008,
+    "message": {
+      "message_id": 35,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052800,
+      "location": {"latitude": 40.416775, "longitude": -3.70379, "horizontal_accuracy": 18.4}
+    }
+  },
+  "location_live_start": {
+    "update_id": 815300009,
+    "message": {
+      "message_id": 36,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052900,
+      "location": {"latitude": 40.4168, "longitude": -3.7038, "horizontal_accuracy": 25.0, "live_period": 3600}
+    }
+  },
+  "location_live_update": {
+    "update_id": 815300010,
+    "edited_message": {
+      "message_id": 36,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052900,
+      "edit_date": 1763053020,
+      "location": {"latitude": 40.4201, "longitude": -3.7055, "horizontal_accuracy": 12.0, "live_period": 3600, "heading": 90}
+    }
+  },
+  "text_edit": {
+    "update_id": 815300011,
+    "edited_message": {
+      "message_id": 31,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052600,
+      "edit_date": 1763052650,
+      "text": "/safeword something else"
+    }
+  },
+  "forget_location": {
+    "update_id": 815300012,
+    "message": {
+      "message_id": 37,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763053100,
+      "text": "/forgetlocation",
+      "entities": [{"offset": 0, "length": 15, "type": "bot_command"}]
+    }
+  }
+}

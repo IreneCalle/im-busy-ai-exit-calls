@@ -1,0 +1,59 @@
+{
+  "_source": "Shapes from the Twilio Calls API status callback, <Connect action> and ConversationRelay WebSocket docs. SIDs are invented.",
+  "status_ringing": {
+    "AccountSid": "AC00000000000000000000000000000000",
+    "ApiVersion": "2010-04-01",
+    "CallSid": "CA11111111111111111111111111111111",
+    "CallStatus": "ringing",
+    "Called": "+34600111222",
+    "Caller": "+15005550006",
+    "Direction": "outbound-api",
+    "From": "+15005550006",
+    "To": "+34600111222",
+    "SequenceNumber": "1",
+    "Timestamp": "Fri, 13 Nov 2026 17:45:30 +0000",
+    "CallbackSource": "call-progress-events"
+  },
+  "status_no_answer": {
+    "AccountSid": "AC00000000000000000000000000000000",
+    "ApiVersion": "2010-04-01",
+    "CallSid": "CA11111111111111111111111111111111",
+    "CallStatus": "no-answer",
+    "CallDuration": "0",
+    "Called": "+34600111222",
+    "Caller": "+15005550006",
+    "Direction": "outbound-api",
+    "From": "+15005550006",
+    "To": "+34600111222",
+    "SequenceNumber": "3",
+    "Timestamp": "Fri, 13 Nov 2026 17:46:00 +0000",
+    "CallbackSource": "call-progress-events"
+  },
+  "connect_action": {
+    "AccountSid": "AC00000000000000000000000000000000",
+    "CallSid": "CA11111111111111111111111111111111",
+    "CallStatus": "in-progress",
+    "Direction": "outbound-api",
+    "From": "+15005550006",
+    "To": "+34600111222",
+    "SessionId": "VX22222222222222222222222222222222",
+    "SessionStatus": "ended",
+    "SessionDuration": "48",
+    "HandoffData": "{\"reason\":\"script-complete\"}"
+  },
+  "relay_setup": {
+    "type": "setup",
+    "sessionId": "VX22222222222222222222222222222222",
+    "callSid": "CA11111111111111111111111111111111",
+    "parentCallSid": "",
+    "from": "+15005550006",
+    "to": "+34600111222",
+    "forwardedFrom": "",
+    "callerName": "",
+    "direction": "outbound-api",
+    "callType": "PSTN",
+    "callStatus": "IN-PROGRESS",
+    "accountSid": "AC00000000000000000000000000000000",
+    "customParameters": {"call_id": "REPLACED_IN_TEST"}
+  }
+}

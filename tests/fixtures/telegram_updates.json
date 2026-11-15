@@ -1,0 +1,75 @@
+{
+  "_source": "Shapes from https://core.telegram.org/bots/api (Update, Message, Contact). Ids and numbers are invented.",
+  "start": {
+    "update_id": 815200001,
+    "message": {
+      "message_id": 1,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052300,
+      "text": "/start",
+      "entities": [{"offset": 0, "length": 6, "type": "bot_command"}]
+    }
+  },
+  "own_contact": {
+    "update_id": 815200002,
+    "message": {
+      "message_id": 2,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052310,
+      "reply_to_message": {"message_id": 1, "date": 1763052301, "chat": {"id": 4242, "type": "private"}},
+      "contact": {"phone_number": "34600111222", "first_name": "Mari", "user_id": 4242}
+    }
+  },
+  "foreign_contact": {
+    "update_id": 815200003,
+    "message": {
+      "message_id": 3,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052320,
+      "contact": {"phone_number": "+34699888777", "first_name": "Pepe", "vcard": "BEGIN:VCARD\nEND:VCARD"}
+    }
+  },
+  "excuse": {
+    "update_id": 815200004,
+    "message": {
+      "message_id": 4,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052330,
+      "text": "tía Carmen, se ha dejado las llaves dentro, en 2 min"
+    }
+  },
+  "excuse_again": {
+    "update_id": 815200006,
+    "message": {
+      "message_id": 6,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052400,
+      "text": "Laura del curro, se ha quedado sin llaves, en 1 min"
+    }
+  },
+  "excuse_third": {
+    "update_id": 815200007,
+    "message": {
+      "message_id": 7,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052500,
+      "text": "mamá, que vengas a cenar, ya"
+    }
+  },
+  "cancel": {
+    "update_id": 815200005,
+    "message": {
+      "message_id": 5,
+      "from": {"id": 4242, "is_bot": false, "first_name": "Mari", "language_code": "es"},
+      "chat": {"id": 4242, "first_name": "Mari", "type": "private"},
+      "date": 1763052340,
+      "text": "/cancel"
+    }
+  }
+}

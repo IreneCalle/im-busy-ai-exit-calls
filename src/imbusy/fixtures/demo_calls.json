@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "note": "Scripted calls for fixture mode: no model, no key. Mirrored in web/src/fixtures/demo-calls.json.",
+  "calls": {
+    "es-ES": {
+      "excuse": "tía Carmen, se ha dejado las llaves dentro, en 2 min",
+      "draft": {
+        "refusal": null,
+        "language": "es-ES",
+        "caller_name": "Tía Carmen",
+        "relationship": "tía",
+        "caller_gender": "female",
+        "speech_register": "family",
+        "user_alias": null,
+        "situation": "Ha bajado a tirar la basura, se le ha cerrado la puerta con las llaves dentro y la única copia la tienes tú.",
+        "ask": "Que le lleves ahora el juego de llaves de repuesto.",
+        "urgency": 4,
+        "facts": [
+          "las llaves están puestas por dentro",
+          "el cerrajero no puede venir hasta las nueve",
+          "tu prima Lucía está de viaje"
+        ],
+        "opening_line": "¿Hola? Oye, soy Carmen, perdona que te llame ahora, ¿tienes un segundo?",
+        "delay_seconds": 120
+      },
+      "lines": {
+        "hook": "Es que he bajado a tirar la basura y se me ha cerrado la puerta con las llaves dentro.",
+        "escalate": "Y el cerrajero no puede venir hasta las nueve, y estoy aquí en el portal en zapatillas.",
+        "ask": "¿Me puedes traer el juego de repuesto que te di? Si sales ahora llegas en nada.",
+        "closing": "Ay, gracias, cariño. Te espero en el portal. Un beso.",
+        "wrap_up": "Bueno, oye, que me estoy quedando sin batería. Si puedes traerlas, ven ya, ¿vale?",
+        "nudge": "¿Hola? ¿Me oyes?"
+      },
+      "user_lines": [
+        "Hola, tía, dime.",
+        "Uy, ¿y eso? ¿Qué ha pasado?",
+        "Vaya. ¿Y ahora qué hacemos?",
+        "Vale, vale, salgo ya para allá."
+      ]
+    },
+    "en-US": {
+      "excuse": "my manager Dana, the client moved the call to right now",
+      "draft": {
+        "refusal": null,
+        "language": "en-US",
+        "caller_name": "Dana",
+        "relationship": "manager",
+        "caller_gender": "female",
+        "speech_register": "work",
+        "user_alias": null,
+        "situation": "The client moved the quarterly review to right now and Dana needs the user on the call.",
+        "ask": "Join the client call in the next ten minutes.",
+        "urgency": 4,
+        "facts": [
+          "the review was set for Thursday",
+          "the client is Harlow & Finch",
+          "the deck is in the shared drive"
+        ],
+        "opening_line": "Hey, it's Dana. Sorry to grab you like this, do you have a second?",
+        "delay_seconds": 60
+      },
+      "lines": {
+        "hook": "Harlow and Finch just moved the quarterly review up. It's happening now, not Thursday.",
+        "escalate": "Their CFO is only free for the next half hour, and I can't walk them through the numbers on my own.",
+        "ask": "Can you jump on in the next ten minutes? You know those figures better than anyone.",
+        "closing": "Perfect, thank you. I'll send you the link right now. Bye.",
+        "wrap_up": "Listen, my battery is about to die. If you can make it, come now, okay?",
+        "nudge": "Hello? Can you hear me?"
+      },
+      "user_lines": [
+        "Hi Dana, what's up?",
+        "Wait, now? What happened?",
+        "Okay, what do you need from me?",
+        "Sure, I'm heading out now."
+      ]
+    }
+  }
+}
